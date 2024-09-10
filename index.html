@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesca festa dei giovani</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #003f7f;
+            transform: translateY(-3px);
+        }
+
+        #output {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #006400;
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 8px;
+            width: 60%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Pesca festa dei giovani 2024</h1>
+    <p>Clicca sul bottone per provare a vincere! :</p>
+
+    <!-- Bottone -->
+    <button onclick="gestisciClic()">Premere</button>
+
+    <!-- Spazio per l'output -->
+    <div id="output"></div>
+
+    <footer>
+        <p>© 2024 - Vamos</p>
+    </footer>
+
+    <script>
+        // Variabile di stato per tenere traccia della prima pressione
+        let primaPressione = true;
+
+        function gestisciClic() {
+            let risultato = '';
+
+            if (primaPressione) {
+                // Genera un numero casuale con distribuzione uniforme tra 0 e 1
+                let estrazione = Math.random();
+                // Formatta il numero casuale con due cifre decimali
+                let estrazioneFormattata = estrazione.toFixed(2);
+
+                // Implementazione della logica condizionale
+                if (estrazioneFormattata <= 0.60) {
+                    risultato = 'Ritenta';
+                } else if (estrazioneFormattata <= 0.64) {
+                    risultato = 'Cocktail';
+                } else if (estrazioneFormattata <= 0.70) {
+                    risultato = 'Birra';
+                } else if (estrazioneFormattata <= 0.80) {
+                    risultato = 'Acqua';
+                } else if (estrazioneFormattata <= 0.87) {
+                    risultato = 'Coca Cola';
+                } else if (estrazioneFormattata <= 0.94) {
+                    risultato = 'Patatine';
+                } else {
+                    risultato = 'Shot';
+                }
+
+                // Cambia lo stato dopo la prima pressione
+                primaPressione = false;
+                document.getElementById('output').innerText = "Numero estratto: " + estrazioneFormattata + " - Risultato: " + risultato;
+            } else {
+                // Mostra il messaggio fisso per i clic successivi
+                document.getElementById('output').innerText = "Paga di nuovo per giocare";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
